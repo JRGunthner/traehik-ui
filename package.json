@@ -1,0 +1,43 @@
+{
+    "name": "traefik-config",
+    "version": "1.2.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev -p 3024",
+        "build": "next build",
+        "build-dev": "next build 2>&1 | node formatter.js",
+        "lint": "next lint -f stylish"
+    },
+    "dependencies": {
+        "@popperjs/core": "^2.11.6",
+        "@types/chai": "^4.3.4",
+        "@types/mocha": "^10.0.1",
+        "@types/node": "18.13.0",
+        "@types/react": "18.0.28",
+        "@types/react-dom": "18.0.11",
+        "@types/bcryptjs": "^2.4.2",
+        "bcryptjs": "^2.4.3",
+        "bootstrap": "^5.2.3",
+        "eslint": "8.34.0",
+        "eslint-config-next": "13.1.6",
+        "next": "^13.4.2",
+        "react": "^18.2.0",
+        "react-bootstrap": "^2.7.2",
+        "react-diff-viewer": "^3.1.1",
+        "react-dom": "^18.2.0",
+        "react-select": "^5.7.0",
+        "react-syntax-highlighter": "^15.5.0",
+        "sass": "^1.58.2",
+        "sweetalert2": "^11.7.3",
+        "typescript": "4.9.5",
+        "yaml": "^2.2.1"
+    },
+    "devDependencies": {
+        "chai": "^4.3.7",
+        "eslint": "8.34.0",
+        "eslint-config-next": "13.1.6",
+        "mocha": "^10.2.0",
+        "ts-mocha": "^10.0.0",
+        "yaml-loader": "^0.8.0"
+    }
+}

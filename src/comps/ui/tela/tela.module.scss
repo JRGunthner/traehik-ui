@@ -1,0 +1,11 @@
+.tela {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    height: 100%;
+
+    + .tela {
+        margin-top: 8px;
+    }
+}
+

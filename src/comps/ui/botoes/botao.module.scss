@@ -1,0 +1,21 @@
+.btn {
+    width: 150px;
+    height: 38px;
+    align-self: flex-end;
+
+    &::first-letter {
+        text-transform: uppercase;
+    }
+
+    i {
+        float: left;
+        padding-top: 4px;
+    }
+}
+
+.btnIcone {
+    width: auto;
+    height: 38px;
+    align-items: center;
+    align-self: flex-end;
+}

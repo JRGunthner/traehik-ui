@@ -1,0 +1,25 @@
+version: "3.6"
+services:
+  traefik-ui:
+    build: .
+    image: traefik-ui:latest
+    container_name: traefik-ui
+    restart: unless-stopped
+    environment:
+      - COMPOSE_PROJECT_NAME=traefik-ui
+    ports:
+      - "3024:8080"
+    volumes:
+      - ./src:/usr/app/src:ro
+      - F:/docker/traefik/dconf:/usr/app/dconf
+    networks:
+      - docker
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "2"
+networks:
+  docker:
+    name: docker
+

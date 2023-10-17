@@ -1,0 +1,20 @@
+root = true
+
+[*]
+end_of_line = crlf
+indent_style = space
+trim_trailing_whitespace = true
+charset = utf-8
+indent_size = 4
+
+[{*.ts, *.tsx}]
+ij_typescript_use_double_quotes = true
+ij_typescript_force_quote_style = true
+ij_typescript_enforce_trailing_comma = whenmultiline
+ij_typescript_force_semicolon_style = true
+ij_typescript_blank_lines_around_field_in_interface = 0
+ij_typescript_blank_lines_around_method_in_interface = 0
+
+[*.yml]
+indent_size = 2
+

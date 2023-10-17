@@ -1,0 +1,7 @@
+.content {
+    display: flex;
+}
+
+.content + .content {
+    margin-top: 8px;
+}

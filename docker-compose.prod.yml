@@ -1,0 +1,9 @@
+version: "3.6"
+services:
+  traefik-ui:
+    environment:
+      - NODE_ENV=production
+    ports:
+      - "3024:8080"
+    volumes:
+      - F:/docker/traefik/dconf:/usr/app/dconf

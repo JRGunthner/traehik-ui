@@ -1,0 +1,60 @@
+http:
+  middlewares:
+    tohttps:
+      redirectscheme:
+        scheme: "https"
+        permanent: false
+    tohttp:
+      redirectscheme:
+        scheme: "http"
+        permanent: true
+    traefik-auth:
+      basicAuth:
+        users:
+          #aceita apenas bcrypt
+          # admin:admin
+          - admin:$2a$12$syaj107GArjh57j0Jv1ZFeluycySNwFsYFQkk9HEr/Ma//n3HeDYG
+    gzip:
+      compress: { }
+    api-prefix:
+      stripPrefix:
+        prefixes:
+          - /api.v2
+          - /api
+  routers:
+    traefik:
+      rule: Host(`proxy.local`)
+      service: api@internal
+      middlewares:
+        - traefik-auth
+        - gzip
+    config:
+      rule: Host(`config.proxy.local`)
+      service: config
+    tche-web:
+      rule: Host(`tche.local`)
+      service: tche-web
+      tls:
+        certResolver: letsencrypt
+    tche-api:
+      rule: Host(`tche.local`) && PathPrefix(`/api/`)
+      service: tche-api
+      middlewares:
+        - api-prefix
+        - gzip
+    meter:
+      rule: Host(`meter.local`)
+      service: meter
+  services:
+    config:
+      loadBalancer:
+        servers:
+          - url: http://192.168.1.205:3000/
+    meter:
+      loadBalancer:
+        servers:
+          - url: http://192.168.1.51:3021/
+    tche-api:
+      loadBalancer:
+        servers:
+          - url: http://192.168.1.51:15672/

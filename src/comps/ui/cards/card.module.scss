@@ -1,0 +1,44 @@
+$cor_link: #565656;
+$bg_card: white;
+
+.card {
+    width: 400px;
+    transition: all 0.2s;
+    position: relative;
+    height: 200px;
+    flex-wrap: nowrap;
+    overflow-y: hidden;
+    box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px;
+
+    &:hover {
+        background-color: darken($bg_card, 5);
+    }
+
+    .header {
+        i {
+            display: none;
+            color: #6c757d;
+            transition: all 0.2s;
+
+            &:hover {
+                color: #1a1a1a
+            }
+
+            &[data-show="true"] {
+                display: block;
+                position: absolute;
+                right: 8px;
+                top: 16px
+            }
+        }
+    }
+
+    small {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        border-top-left-radius: 16px;
+        padding: 4px 8px;
+        text-align: center;
+    }
+}

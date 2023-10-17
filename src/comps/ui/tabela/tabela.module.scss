@@ -1,0 +1,40 @@
+.tabela {
+    width: 100%;
+    border: 1px solid lightgray;
+    overflow-x: hidden;
+    border-radius: 4px;
+
+    td {
+        padding: 8px 12px;
+        font-size: 18px;
+        line-height: 100%;
+    }
+
+    thead {
+        position: sticky;
+        top: 0;
+        background-color: green;
+        white-space: break-spaces;
+        outline: 2px solid darkgray;
+
+        :hover {
+            cursor: pointer;
+        }
+    }
+
+    tr:nth-child(odd) {
+        background-color: #F1F1F1;
+    }
+
+    .desativo {
+        opacity: 40%;
+    }
+
+    tfoot {
+        td {
+            border: 0 none transparent;
+            font-weight: bold;
+            background-color: #fff
+        }
+    }
+}

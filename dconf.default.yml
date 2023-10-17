@@ -1,0 +1,57 @@
+http:
+  middlewares:
+    api-prefix:
+      stripPrefix:
+        prefixes:
+          - /api.v2
+          - /api
+    gzip:
+      compress: { }
+    tohttp:
+      redirectscheme:
+        scheme: http
+        permanent: false
+    tohttps:
+      redirectscheme:
+        scheme: https
+        permanent: false
+    traefik-auth:
+      basicAuth:
+        users:
+          - admin:$2a$12$syaj107GArjh57j0Jv1ZFeluycySNwFsYFQkk9HEr/Ma//n3HeDYG
+  routers:
+    meu-app-api:
+      rule: Host(`meu-app-api.local`) && PathPrefix(`/api/`)
+      service: meu-app-api
+      middlewares:
+        - api-prefix
+        - gzip
+    app-web:
+      rule: Host(`app-web.local`)
+      service: app-web
+      tls:
+        certResolver: letsencrypt
+    auth-app:
+      rule: Host(`auth-app.local`)
+      service: auth-app
+      middlewares:
+        - traefik-auth
+    traefik:
+      rule: Host(`proxy.local`)
+      service: api@internal
+      middlewares:
+        - traefik-auth
+        - gzip
+  services:
+    meu-app-api:
+      loadBalancer:
+        servers:
+          - url: http://192.168.0.45:3002/
+    app-web:
+      loadBalancer:
+        servers:
+          - url: http://192.168.0.46:3003/
+    auth-app:
+      loadBalancer:
+        servers:
+          - url: http://192.168.1.47:3004/
